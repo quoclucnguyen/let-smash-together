@@ -108,7 +108,7 @@ export function GameView({
 
         {(currentQuestion.questionType === 'multiple-choice' || currentQuestion.questionType === 'image') && (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-            {currentQuestion.options.map((opt: string, idx: number) => (
+            {(currentQuestion.options ?? []).map((opt: string, idx: number) => (
               <button
                 key={idx}
                 disabled={view === 'host-game' || submitted}

@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-primary: #FF5200;
+  --color-secondary: #F67700;
+  --color-accent: #F8B200;
+  --color-blue-deep: #006FAD;
+  --color-blue-mid: #009BE0;
+  --color-blue-light: #00B5F4;
+}
+
+body {
+  @apply bg-slate-50 text-slate-900 font-sans;
+}
+
+.glass-card {
+  @apply bg-white/80 backdrop-blur-md border border-white/20 shadow-xl rounded-3xl;
+}
+
+.btn-primary {
+  @apply bg-primary text-white px-6 py-3 rounded-2xl font-bold transition-all hover:scale-105 active:scale-95 shadow-lg shadow-primary/20;
+}
+
+.btn-blue {
+  @apply bg-blue-mid text-white px-6 py-3 rounded-2xl font-bold transition-all hover:scale-105 active:scale-95 shadow-lg shadow-blue-mid/20;
+}
+
+.input-field {
+  @apply w-full bg-white border-2 border-slate-100 rounded-2xl p-4 focus:border-blue-mid focus:outline-none transition-all shadow-inner;
+}

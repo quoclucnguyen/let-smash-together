@@ -50,43 +50,43 @@ export function HostSetupView({
       key="host-setup"
       initial={{ opacity: 0, x: -20 }}
       animate={{ opacity: 1, x: 0 }}
-      className="max-w-4xl mx-auto mt-10 px-4 pb-20"
+      className="max-w-4xl mx-auto mt-6 md:mt-10 px-3 md:px-4 pb-20"
     >
-      <div className="glass-card p-8">
-        <div className="flex justify-between items-center mb-8">
-          <h2 className="text-3xl font-black text-blue-deep">Thiết lập bộ câu hỏi</h2>
-          <div className="flex gap-3">
-            <button onClick={onDownloadTemplate} className="btn-blue flex items-center gap-2 text-sm">
-              <FileUp size={18} /> Tải file mẫu
+      <div className="glass-card p-4 md:p-8">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6 md:mb-8">
+          <h2 className="text-xl md:text-3xl font-black text-blue-deep">Thiết lập bộ câu hỏi</h2>
+          <div className="flex flex-wrap gap-2 md:gap-3 w-full md:w-auto">
+            <button onClick={onDownloadTemplate} className="btn-blue flex items-center gap-1 md:gap-2 text-xs md:text-sm px-3 md:px-4">
+              <FileUp size={16} /> <span className="hidden sm:inline">Tải file mẫu</span><span className="sm:hidden">Mẫu</span>
             </button>
-            <label className="btn-blue cursor-pointer flex items-center gap-2 text-sm">
-              <FileUp size={18} /> Nhập Excel
+            <label className="btn-blue cursor-pointer flex items-center gap-1 md:gap-2 text-xs md:text-sm px-3 md:px-4">
+              <FileUp size={16} /> <span className="hidden sm:inline">Nhập Excel</span><span className="sm:hidden">Import</span>
               <input type="file" accept=".xlsx, .xls" onChange={onImportExcel} className="hidden" />
             </label>
-            <button onClick={onCreateRoom} disabled={isCreatingRoom} className="btn-primary flex items-center gap-2 text-sm">
-              {isCreatingRoom ? 'Đang tạo...' : 'Tạo phòng'} <Play size={18} />
+            <button onClick={onCreateRoom} disabled={isCreatingRoom} className="btn-primary flex items-center gap-1 md:gap-2 text-xs md:text-sm px-3 md:px-4">
+              {isCreatingRoom ? 'Đang tạo...' : 'Tạo phòng'} <Play size={16} />
             </button>
           </div>
         </div>
 
-        <div className="space-y-6">
+        <div className="space-y-4 md:space-y-6">
           {questions.map((q, idx) => (
-            <div key={idx} className="bg-slate-50 rounded-2xl p-6 border border-slate-100 relative group">
+            <div key={idx} className="bg-slate-50 rounded-xl md:rounded-2xl p-4 md:p-6 border border-slate-100 relative group">
               <button
                 onClick={() => setQuestions(prev => prev.filter((_, i) => i !== idx))}
-                className="absolute -top-2 -right-2 bg-red-500 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity shadow-lg"
+                className="absolute -top-2 -right-2 bg-red-500 text-white p-1.5 md:p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity shadow-lg"
               >
-                <Trash2 size={16} />
+                <Trash2 size={14} className="md:w-4 md:h-4" />
               </button>
 
-              <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6">
                 <div className="md:col-span-8">
                   <label className="block text-[10px] font-bold uppercase text-slate-400 mb-2">Câu hỏi {idx + 1}</label>
                   <input
                     type="text"
                     value={q.text}
                     onChange={(e) => updateQuestion(idx, 'text', e.target.value)}
-                    className="input-field text-lg font-bold"
+                    className="input-field text-base md:text-lg font-bold"
                     placeholder="Nhập nội dung câu hỏi..."
                   />
                 </div>
@@ -115,13 +115,13 @@ export function HostSetupView({
                 </div>
               </div>
 
-              <div className="mt-6 pt-6 border-t border-slate-100">
+              <div className="mt-4 md:mt-6 pt-4 md:pt-6 border-t border-slate-100">
                 {(q.type === 'multiple-choice' || q.type === 'image') && (
-                  <div className="space-y-4">
+                  <div className="space-y-3 md:space-y-4">
                     {q.type === 'image' && (
-                      <div className="mb-4">
+                      <div className="mb-3 md:mb-4">
                         <label className="block text-[10px] font-bold uppercase text-slate-400 mb-2">Link ảnh (URL)</label>
-                        <div className="flex gap-3">
+                        <div className="flex gap-2 md:gap-3">
                           <input
                             type="text"
                             value={q.imageUrl || ''}
@@ -130,21 +130,21 @@ export function HostSetupView({
                             placeholder="https://example.com/image.jpg"
                           />
                           {q.imageUrl && (
-                            <div className="w-12 h-12 rounded-lg overflow-hidden border border-slate-200 flex-shrink-0">
+                            <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg overflow-hidden border border-slate-200 flex-shrink-0">
                               <img src={q.imageUrl} alt="Xem trước ảnh câu hỏi" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
                             </div>
                           )}
                         </div>
                       </div>
                     )}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
                       {(q.options || ['', '', '', '']).map((opt, oIdx) => (
-                        <div key={oIdx} className="flex items-center gap-3">
+                        <div key={oIdx} className="flex items-center gap-2 md:gap-3">
                           <input
                             type="radio"
                             checked={q.correctIndex === oIdx}
                             onChange={() => updateQuestion(idx, 'correctIndex', oIdx)}
-                            className="w-5 h-5 accent-primary"
+                            className="w-4 h-4 md:w-5 md:h-5 accent-primary"
                           />
                           <input
                             type="text"
@@ -164,9 +164,9 @@ export function HostSetupView({
                 )}
 
                 {q.type === 'matching' && (
-                  <div className="space-y-3">
+                  <div className="space-y-2 md:space-y-3">
                     {(q.pairs || [{ left: '', right: '' }]).map((pair, pIdx) => (
-                      <div key={pIdx} className="grid grid-cols-2 gap-4">
+                      <div key={pIdx} className="grid grid-cols-2 gap-3 md:gap-4">
                         <input
                           type="text"
                           value={pair.left}
@@ -195,7 +195,7 @@ export function HostSetupView({
                 )}
 
                 {(q.type === 'scramble' || q.type === 'guess') && (
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
                     <div>
                       <label className="block text-[10px] font-bold uppercase text-slate-400 mb-2">Đáp án đúng</label>
                       <input
@@ -224,12 +224,12 @@ export function HostSetupView({
             </div>
           ))}
 
-          <div className="flex flex-wrap gap-3">
-            <button onClick={() => addQuestion('multiple-choice')} className="flex-1 py-4 bg-white border-2 border-slate-100 rounded-2xl font-bold uppercase text-xs hover:border-primary transition-colors">Trắc nghiệm</button>
-            <button onClick={() => addQuestion('matching')} className="flex-1 py-4 bg-white border-2 border-slate-100 rounded-2xl font-bold uppercase text-xs hover:border-primary transition-colors">Nối chữ</button>
-            <button onClick={() => addQuestion('scramble')} className="flex-1 py-4 bg-white border-2 border-slate-100 rounded-2xl font-bold uppercase text-xs hover:border-primary transition-colors">Ghép chữ</button>
-            <button onClick={() => addQuestion('guess')} className="flex-1 py-4 bg-white border-2 border-slate-100 rounded-2xl font-bold uppercase text-xs hover:border-primary transition-colors">Đoán chữ</button>
-            <button onClick={() => addQuestion('image')} className="flex-1 py-4 bg-white border-2 border-slate-100 rounded-2xl font-bold uppercase text-xs hover:border-primary transition-colors">Hình ảnh</button>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2 md:gap-3">
+            <button onClick={() => addQuestion('multiple-choice')} className="py-3 md:py-4 bg-white border-2 border-slate-100 rounded-xl md:rounded-2xl font-bold uppercase text-[10px] md:text-xs hover:border-primary transition-colors">Trắc nghiệm</button>
+            <button onClick={() => addQuestion('matching')} className="py-3 md:py-4 bg-white border-2 border-slate-100 rounded-xl md:rounded-2xl font-bold uppercase text-[10px] md:text-xs hover:border-primary transition-colors">Nối chữ</button>
+            <button onClick={() => addQuestion('scramble')} className="py-3 md:py-4 bg-white border-2 border-slate-100 rounded-xl md:rounded-2xl font-bold uppercase text-[10px] md:text-xs hover:border-primary transition-colors">Ghép chữ</button>
+            <button onClick={() => addQuestion('guess')} className="py-3 md:py-4 bg-white border-2 border-slate-100 rounded-xl md:rounded-2xl font-bold uppercase text-[10px] md:text-xs hover:border-primary transition-colors">Đoán chữ</button>
+            <button onClick={() => addQuestion('image')} className="py-3 md:py-4 bg-white border-2 border-slate-100 rounded-xl md:rounded-2xl font-bold uppercase text-[10px] md:text-xs hover:border-primary transition-colors col-span-2 sm:col-span-1">Hình ảnh</button>
           </div>
         </div>
       </div>

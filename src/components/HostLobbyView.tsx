@@ -2,7 +2,7 @@
 
 import { motion } from 'motion/react';
 import { Users, Copy } from 'lucide-react';
-import type { Player } from '../types';
+import type { Player } from '@/types';
 
 interface HostLobbyViewProps {
   roomId: string;

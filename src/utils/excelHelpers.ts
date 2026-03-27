@@ -1,5 +1,5 @@
 import * as XLSX from 'xlsx';
-import type { Question, QuestionType, LeaderboardEntry } from '../types';
+import type { Question, QuestionType, LeaderboardEntry } from '@/types';
 
 type ExcelRow = Record<string, unknown>;
 

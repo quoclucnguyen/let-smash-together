@@ -3,7 +3,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Play, Trash2, FileUp } from 'lucide-react';
-import type { Question, QuestionPair, QuestionType } from '../types';
+import type { Question, QuestionPair, QuestionType } from '@/types';
 
 interface HostSetupViewProps {
   questions: Question[];

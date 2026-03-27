@@ -2,7 +2,7 @@
 
 import { motion } from 'motion/react';
 import { Trophy, FileUp } from 'lucide-react';
-import type { LeaderboardEntry } from '../types';
+import type { LeaderboardEntry } from '@/types';
 
 interface InterstitialLeaderboardViewProps {
   leaderboard: LeaderboardEntry[];

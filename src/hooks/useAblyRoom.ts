@@ -13,9 +13,9 @@ import type {
   PlayerScore,
   Question,
   StatePayload,
-} from '../types';
-import { evaluateAnswer } from '../utils/evaluateAnswer';
-import { buildLeaderboard } from '../utils/buildLeaderboard';
+} from '@/types';
+import { evaluateAnswer } from '@/utils/evaluateAnswer';
+import { buildLeaderboard } from '@/utils/buildLeaderboard';
 
 type PresenceMember = {
   clientId: string;

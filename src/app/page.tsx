@@ -1,4 +1,4 @@
-import QuizApp from "./QuizApp";
+import QuizApp from "@/app/QuizApp";
 
 export default function Home() {
   return <QuizApp />;

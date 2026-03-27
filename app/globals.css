@@ -14,20 +14,41 @@
 
 body {
   @apply bg-slate-50 text-slate-900 font-sans;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 .glass-card {
-  @apply bg-white/80 backdrop-blur-md border border-white/20 shadow-xl rounded-3xl;
+  @apply bg-white/80 backdrop-blur-md border border-white/20 shadow-xl rounded-2xl md:rounded-3xl;
 }
 
 .btn-primary {
-  @apply bg-primary text-white px-6 py-3 rounded-2xl font-bold transition-all hover:scale-105 active:scale-95 shadow-lg shadow-primary/20;
+  @apply bg-primary text-white px-4 md:px-6 py-3 rounded-xl md:rounded-2xl font-bold transition-all hover:scale-105 active:scale-95 shadow-lg shadow-primary/20;
 }
 
 .btn-blue {
-  @apply bg-blue-mid text-white px-6 py-3 rounded-2xl font-bold transition-all hover:scale-105 active:scale-95 shadow-lg shadow-blue-mid/20;
+  @apply bg-blue-mid text-white px-4 md:px-6 py-3 rounded-xl md:rounded-2xl font-bold transition-all hover:scale-105 active:scale-95 shadow-lg shadow-blue-mid/20;
 }
 
 .input-field {
-  @apply w-full bg-white border-2 border-slate-100 rounded-2xl p-4 focus:border-blue-mid focus:outline-none transition-all shadow-inner;
+  @apply w-full bg-white border-2 border-slate-100 rounded-xl md:rounded-2xl p-3 md:p-4 focus:border-blue-mid focus:outline-none transition-all shadow-inner text-base;
+}
+
+/* Mobile optimizations */
+@media (max-width: 640px) {
+  .glass-card {
+    @apply rounded-2xl;
+  }
+  
+  /* Prevent zoom on input focus on iOS */
+  input, select, textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* Safe area for mobile devices */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  body {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
 }

@@ -3,18 +3,18 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { AnimatePresence } from 'motion/react';
 import { nanoid } from 'nanoid';
-import type { AnswerResult, AppView, LeaderboardEntry, LiveQuestion, Player, PlayerAnswer, Question } from './types';
-import { useAblyRoom } from './hooks/useAblyRoom';
-import { useGameTimer } from './hooks/useGameTimer';
-import { exportToExcel, downloadTemplate, parseImportedExcel } from './utils/excelHelpers';
-import { Notification } from './components/Notification';
-import { LandingView } from './components/LandingView';
-import { HostSetupView } from './components/HostSetupView';
-import { HostLobbyView } from './components/HostLobbyView';
-import { PlayerJoinView } from './components/PlayerJoinView';
-import { PlayerLobbyView } from './components/PlayerLobbyView';
-import { GameView } from './components/GameView';
-import { InterstitialLeaderboardView, FinalResultsView } from './components/LeaderboardView';
+import type { AnswerResult, AppView, LeaderboardEntry, LiveQuestion, Player, PlayerAnswer, Question } from '@/types';
+import { useAblyRoom } from '@/hooks/useAblyRoom';
+import { useGameTimer } from '@/hooks/useGameTimer';
+import { exportToExcel, downloadTemplate, parseImportedExcel } from '@/utils/excelHelpers';
+import { Notification } from '@/components/Notification';
+import { LandingView } from '@/components/LandingView';
+import { HostSetupView } from '@/components/HostSetupView';
+import { HostLobbyView } from '@/components/HostLobbyView';
+import { PlayerJoinView } from '@/components/PlayerJoinView';
+import { PlayerLobbyView } from '@/components/PlayerLobbyView';
+import { GameView } from '@/components/GameView';
+import { InterstitialLeaderboardView, FinalResultsView } from '@/components/LeaderboardView';
 
 export default function App() {
   const [view, setView] = useState<AppView>('landing');

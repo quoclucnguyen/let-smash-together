@@ -2,7 +2,7 @@
 
 import { motion } from 'motion/react';
 import { Users, Send, Layers, CheckCircle2, XCircle } from 'lucide-react';
-import type { AnswerResult, AppView, LiveQuestion, PlayerAnswer, QuestionPair } from '../types';
+import type { AnswerResult, AppView, LiveQuestion, PlayerAnswer, QuestionPair } from '@/types';
 
 interface GameViewProps {
   view: AppView;

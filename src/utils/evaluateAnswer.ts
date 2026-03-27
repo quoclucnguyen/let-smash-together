@@ -1,4 +1,4 @@
-import type { PlayerAnswer, Question } from '../types';
+import type { PlayerAnswer, Question } from '@/types';
 
 export function evaluateAnswer(question: Question, answer: PlayerAnswer) {
   let isCorrect = false;
